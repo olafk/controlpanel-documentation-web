@@ -51,7 +51,9 @@ public class DocumentationFilter extends BaseFilter {
 			return "";
 		
 		String result = "<div style=\"float:right; line-height:1.5; padding-bottom:0;" + "z-index:99;\">";
-		if ("audio".equals(uc.mediaType)) {
+		if (null == uc.mediaType) {
+			// ignore
+		} else if ("audio".equals(uc.mediaType)) {
 			result += "<audio controls=\"play\" preload=\"metadata\" style=\" width:300px; max-height:2.5em; \""
 					+ " onplay=\"" + showJS + "\">\n" 
 					+ "	<source src=\"" + uc.mediaURL + "\" type=\"audio/mpeg\">\n" 

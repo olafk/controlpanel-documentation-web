@@ -29,23 +29,23 @@ public class ContentInitializer {
 	public void createTemplate(RenderRequest request, BaseFilter filter) throws IOException {
 		rememberFilter(request, filter);
 		
-		String suggestedFile = filter.getSuggestedFile(request);
-		File localdocs = new File("/home/olaf/ds72-workspace/controlpanel-documentation-docs/md/72en", suggestedFile);
-		if(! localdocs.exists()) {
-			if(!localdocs.getParentFile().exists()) {
-				createDirectory(localdocs.getParentFile());
-			}
-			localdocs.createNewFile();
-			PrintWriter out = new PrintWriter(localdocs, "UTF-8");
-			out.println("# Headline\n");
-			out.println("## Documentation\n");
-			out.println("* Sorry, no documentation linked yet - please contribute\n");
-			out.println("## Related Topics\n\n");
-			out.println("## Community Resources\n\n");
-			out.println("### Contribute\n");
-			out.println("[Edit this file on github](https://github.com/olafk/controlpanel-documentation-docs/blob/master/md/72en/" + suggestedFile + ")");
-			out.close();
-		}
+//		String suggestedFile = filter.getSuggestedFile(request);
+//		File localdocs = new File("/home/olaf/ds72-workspace/controlpanel-documentation-docs/md/72en", suggestedFile);
+//		if(! localdocs.exists()) {
+//			if(!localdocs.getParentFile().exists()) {
+//				createDirectory(localdocs.getParentFile());
+//			}
+//			localdocs.createNewFile();
+//			PrintWriter out = new PrintWriter(localdocs, "UTF-8");
+//			out.println("# Headline\n");
+//			out.println("## Documentation\n");
+//			out.println("* Sorry, no documentation linked yet - please contribute\n");
+//			out.println("## Related Topics\n\n");
+//			out.println("## Community Resources\n\n");
+//			out.println("### Contribute\n");
+//			out.println("[Edit this file on github](https://github.com/olafk/controlpanel-documentation-docs/blob/master/md/72en/" + suggestedFile + ")");
+//			out.close();
+//		}
 	}
 	
 	private void rememberFilter(RenderRequest request, BaseFilter f) {

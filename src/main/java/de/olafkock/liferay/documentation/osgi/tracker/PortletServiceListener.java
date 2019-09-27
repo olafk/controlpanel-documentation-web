@@ -105,7 +105,7 @@ final class PortletServiceListener implements ServiceListener {
 		// Temporary feature: When shutting down, generate content.json for all
 		// pages that could have been filtered
 		if(services.isEmpty()) {
-			dumpConfig();
+//			dumpConfig();
 		}
 	}
 

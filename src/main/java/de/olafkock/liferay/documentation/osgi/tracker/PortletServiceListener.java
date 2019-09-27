@@ -121,6 +121,7 @@ final class PortletServiceListener implements ServiceListener {
 	 * temporary feature: Create json configuration for all pages that have been
 	 * seen so far.
 	 */
+	@SuppressWarnings("unused")
 	private void dumpConfig() {
 		log.debug("dumping Config to /tmp/content.json");
 		PortletDocumentation[] docs = new PortletDocumentation[config.size()];

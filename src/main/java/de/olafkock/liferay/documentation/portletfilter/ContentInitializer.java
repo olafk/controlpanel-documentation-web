@@ -2,7 +2,6 @@ package de.olafkock.liferay.documentation.portletfilter;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -91,6 +90,7 @@ public class ContentInitializer {
 		return newValue;
 	}
 
+	@SuppressWarnings("unused")
 	private static void createDirectory(File file) {
 		if(file.exists() && file.isDirectory()) {
 			return;

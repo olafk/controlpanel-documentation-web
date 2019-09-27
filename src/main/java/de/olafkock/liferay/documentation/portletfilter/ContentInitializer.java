@@ -39,7 +39,7 @@ public class ContentInitializer {
 			PrintWriter out = new PrintWriter(localdocs, "UTF-8");
 			out.println("# Headline\n");
 			out.println("## Documentation\n");
-			out.println("* Sorry, no documentation linked yet - please contribute");
+			out.println("* Sorry, no documentation linked yet - please contribute\n");
 			out.println("## Related Topics\n\n");
 			out.println("## Community Resources\n\n");
 			out.println("### Contribute\n");

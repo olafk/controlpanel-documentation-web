@@ -20,7 +20,6 @@ import javax.portlet.filter.RenderFilter;
  * @author Olaf Kock
  */
 
-@SuppressWarnings("resource")
 public abstract class BaseFilter implements RenderFilter {
 
 	private ContentInitializer contentInitializer;

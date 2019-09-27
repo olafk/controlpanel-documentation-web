@@ -20,10 +20,14 @@ import javax.portlet.filter.RenderFilter;
  * @author Olaf Kock
  */
 
+@SuppressWarnings("resource")
 public abstract class BaseFilter implements RenderFilter {
 
-	public BaseFilter() {
+	private ContentInitializer contentInitializer;
+
+	public BaseFilter(ContentInitializer contentInitializer) {
 		super();
+		this.contentInitializer = contentInitializer;
 	}
 
 	@Override
@@ -48,6 +52,9 @@ public abstract class BaseFilter implements RenderFilter {
 
 			if (isFiltered) {
 				response.getWriter().append(getFooterContent(request));
+				// temporarily: Make sure to create content for every possible
+				// primary/secondary combination that we see.
+				contentInitializer.createTemplate(request, this);
 			}
 		}
 
@@ -57,6 +64,8 @@ public abstract class BaseFilter implements RenderFilter {
 				.replaceAll("_web_internal_portlet_", "..wip..").replaceAll("_admin..w", "..aw");
 	}
 
+	protected abstract String getPrimaryTopic();
+	
 	/**
 	 * This retrieves an indicator if the portlet utilizes different Tabs for different content.
 	 * For some reason the tabs are not using consistent indicators. As we don't care about the 
@@ -70,13 +79,22 @@ public abstract class BaseFilter implements RenderFilter {
 	 */
 	protected String getSecondaryTopic(RenderRequest request) {
 		final String[] params = new String[] { "toolbarItem", "type", "navigation", "tab", 
-				"tabs1", "tabs2", "configurationScreenKey", "pid", "mvcRenderCommandName" };
+				"tabs1", "tabs2", "configurationScreenKey", "pid", "factoryPid", 
+				"mvcRenderCommandName",	"mvcPath"};
 		for (String p : params) {
 			String result = request.getParameter(p);
 			if (result != null)
-				return HtmlUtil.escape(result);
+				return HtmlUtil.escape(simplify(result));
 		}
 		return "-";
+	}
+
+	private String simplify(String result) {
+		if(result.startsWith("/")) {
+			result = result.substring(1);
+		}
+		result = result.replace('/', '_');
+		return result;
 	}
 
 	protected abstract String getFooterContent(RenderRequest request);
@@ -84,4 +102,6 @@ public abstract class BaseFilter implements RenderFilter {
 	protected abstract String getHeaderContent(RenderRequest request);
 
 	protected abstract boolean isFiltered(RenderRequest request, ThemeDisplay themeDisplay);
+	
+	protected abstract String getSuggestedFile(RenderRequest request);
 }

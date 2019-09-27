@@ -2,6 +2,7 @@ package de.olafkock.liferay.documentation.resources;
 
 import com.liferay.portal.kernel.json.JSON;
 
+@JSON
 public class PortletDocumentation {
 	@JSON
 	public String portletId;

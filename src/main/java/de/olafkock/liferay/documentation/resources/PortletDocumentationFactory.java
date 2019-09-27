@@ -15,7 +15,15 @@ import java.util.Map;
  *
  */
 public class PortletDocumentationFactory {
+
+	/**
+	 * @return null if infrastructure isn't ready yet, e.g. JSON deserializing fails
+	 * for any reason (typically because our bundle may be started before Liferay's 
+	 * JSONFactory is initialized). Try again later if this appears.
+	 */
 	public static Map<String, PortletDocumentation> getConfiguration() {
+		if(JSONFactoryUtil.getJSONFactory() == null) return null; // not yet initialized
+		
 		HashMap<String, PortletDocumentation> result = new HashMap<String, PortletDocumentation>();
 		try {
 			InputStream configuration = PortletDocumentationFactory.class.getResourceAsStream("/content.json");
@@ -27,14 +35,14 @@ public class PortletDocumentationFactory {
 			    conf_read = bis.read();
 			}
 			String json = buf.toString("UTF-8");
-			PortletDocumentation[] docs = JSONFactoryUtil.looseDeserialize(json, PortletDocumentation[].class);
+			PortletDocumentation[] docs;
+			docs = JSONFactoryUtil.looseDeserialize(json, PortletDocumentation[].class);
 			for (PortletDocumentation doc : docs) {
 				result.put(doc.portletId, doc);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return result;
 	}
 }

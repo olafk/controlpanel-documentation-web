@@ -22,14 +22,15 @@ import de.olafkock.liferay.documentation.resources.URLConfig;
  */
 public class DocumentationFilter extends BaseFilter {
 
-	private final PortletDocumentation portletDocumentation;
+	final PortletDocumentation portletDocumentation;
 	private final String elementId;
 	private final String showId;
 	private final String hideId;
 	private final String showJS;
 	private final String hideJS;
 
-	public DocumentationFilter(PortletDocumentation portletDocumentation) {
+	public DocumentationFilter(PortletDocumentation portletDocumentation, ContentInitializer contentInitializer) {
+		super(contentInitializer);
 		this.portletDocumentation = portletDocumentation;
 		String namespace = PortalUtil.getPortletNamespace(portletDocumentation.portletId);
 		elementId = namespace + "_additionalDocumentation";
@@ -57,7 +58,7 @@ public class DocumentationFilter extends BaseFilter {
 					+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Audio documentation</a>\n" 
 					+ "</audio>";
 		} else if ("video".equals(uc.mediaType)) {
-			result += "<video controls preload=\"metadata\" style=\" position:fixed; z-index:1000; top:2em; right:0px; max-height:8em; padding-bottom:0;\" "
+			result += "<video controls preload=\"metadata\" style=\" z-index:1000; top:2em; right:0px; max-height:8em; padding-bottom:0;\" "
 					+ "onplay=\"" + showJS + "\">\n" 
 					+ "	<source src=\"" + uc.mediaURL + "\" type=\"video/mp4\">\n" 
 					+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Video documentation</a>\n" 
@@ -110,7 +111,23 @@ public class DocumentationFilter extends BaseFilter {
 		boolean doFilter = themeDisplay.getTheme().isControlPanelTheme()
 				&& ! portletDocumentation.portletId.equals(
 						"com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet")
+				&& ! portletDocumentation.portletId.equals(
+						"com_liferay_marketplace_store_web_portlet_MarketplaceStorePortlet")
 				&& ! "pop_up".equals(sr.getParameter("p_p_state"));
 		return doFilter;
+	}
+
+	@Override
+	protected String getSuggestedFile(RenderRequest request) {
+		String secondaryTopic = getSecondaryTopic(request);
+		if("-".equals(secondaryTopic)) {
+			return portletDocumentation.portletId + ".md";
+		} else {
+			return portletDocumentation.portletId + "/" + secondaryTopic + ".md";
+		}
+	}
+	
+	protected String getPrimaryTopic() {
+		return portletDocumentation.portletId;
 	}
 }

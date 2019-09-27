@@ -19,7 +19,8 @@ public class PlaceholderFilter extends BaseFilter {
 
 	private String portletName;
 
-	public PlaceholderFilter(String portletName) {
+	public PlaceholderFilter(String portletName, ContentInitializer contentInitializer) {
+		super(contentInitializer);
 		this.portletName = portletName;
 	}
 
@@ -52,8 +53,26 @@ public class PlaceholderFilter extends BaseFilter {
 
 		boolean doFilter = themeDisplay.getTheme().isControlPanelTheme()
 				&& ! portletName.equals("com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet")
+				&& ! portletName.equals("com_liferay_marketplace_store_web_portlet_MarketplaceStorePortlet")
+				&& ! portletName.equals("com_liferay_marketplace_store_web_portlet_MarketplacePurchasedPortlet")
 				&& ! "pop_up".equals(sr.getParameter("p_p_state"))
 				;
 		return doFilter;
+	}
+	
+	@Override
+	protected String getSuggestedFile(RenderRequest request) {
+		String secondaryTopic = getSecondaryTopic(request);
+		String name = "";
+		if("-".equals(secondaryTopic)) {
+			name = portletName + ".md";
+		} else {
+			name = portletName + "/" + secondaryTopic + ".md";
+		}
+		return name;
+	}
+	
+	protected String getPrimaryTopic() {
+		return portletName;
 	}
 }

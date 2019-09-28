@@ -86,8 +86,10 @@ public class DocumentationFilter extends BaseFilter {
 				+ "width:auto; height:4em; max-width:50%; " + "transition-property: size top height; "
 				+ "transition-duration: 1s; " + "transition-timing-function: ease; " + "padding:10px;\">");
 		if (uc != null && uc.documentationURL != null && !uc.documentationURL.isBlank()) {
-			content.append((uc == null) ? "" : "More documentation and pointers");
+			content.append((uc == null) ? "" : "More documentation and pointers ");
 			content.append("<span style=\"float:right; \">");
+			content.append("<a href=\"https://github.com/olafk/controlpanel-documentation-docs/blob/master/md/72en/"
+					+ getSuggestedFile(request) + "\" target=\"_blank\">edit on github</a> / ");
 			content.append("<span style=\"cursor: pointer; \" id=\"" + showId + "\" onclick=\"" + showJS
 					+ "\">show</span> / ");
 			content.append(
@@ -99,7 +101,7 @@ public class DocumentationFilter extends BaseFilter {
 			content.append("\" width=\"100%\" height=\"80%\" > </iframe>");
 		}
 		content.append(portletDocumentation.portletId);
-		content.append(" ");
+		content.append(" | ");
 		content.append(getSecondaryTopic(request));
 		content.append("</div>");
 

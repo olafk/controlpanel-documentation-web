@@ -24,7 +24,7 @@ import de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationC
 
 public abstract class BaseFilter implements RenderFilter {
 
-	private ContentInitializer contentInitializer;
+	protected ContentInitializer contentInitializer;
 
 	public BaseFilter(ContentInitializer contentInitializer) {
 		super();
@@ -88,10 +88,6 @@ public abstract class BaseFilter implements RenderFilter {
 				return HtmlUtil.escape(simplify(result));
 		}
 		return "-";
-	}
-	
-	protected ControlPanelDocumentationConfiguration getConfiguration() {
-		return ContentInitializer.getConfiguration();
 	}
 
 	private String simplify(String result) {

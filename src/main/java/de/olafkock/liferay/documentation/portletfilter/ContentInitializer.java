@@ -50,19 +50,24 @@ public class ContentInitializer {
 				}
 				localdocs.createNewFile();
 				PrintWriter out = new PrintWriter(localdocs, "UTF-8");
-				out.println("# Headline\n");
-				out.println("## Documentation\n");
-				out.println("* Sorry, no documentation linked yet - please contribute\n");
-				out.println("## Related Topics\n\n");
-				out.println("## Community Resources\n\n");
-				out.println("### Contribute\n");
-				out.println("[Edit this file on github](" + _myConfiguration.contentURLPrefix() + "/" + suggestedFile + ")");
+				out.println(generateMarkdown(request, suggestedFile));
 				out.close();
 			}
 		}
 	}
 	
-
+	public String generateMarkdown(RenderRequest request, String filename) {
+		StringBuffer result = new StringBuffer("# Headline\n\n");
+		result.append("## Documentation\n\n");
+		result.append("* Sorry, no documentation linked yet - please contribute\n\n");
+		result.append("## Related Topics\n\n");
+		result.append("## Community Resources\n\n");
+		result.append("### Contribute\n\n");
+		result.append("[Edit this file on github](" + _myConfiguration.contentURLPrefix() + filename + ")");
+		return result.toString();
+	}
+	
+	
 	/**
 	 * temporary feature: Create json configuration for all pages that have been
 	 * seen so far.

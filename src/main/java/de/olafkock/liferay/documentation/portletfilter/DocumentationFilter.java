@@ -90,7 +90,7 @@ public class DocumentationFilter extends BaseFilter {
 			content.append((uc == null) ? "" : "More documentation and pointers ");
 			content.append("<span style=\"float:right; \">");
 			content.append("<a href=\"" 
-					+ this.getConfiguration().repositoryURLPrefix()
+					+ this.contentInitializer.getRepositoryURLPrefix()
 					+ getSuggestedFile(request) + "\" target=\"_blank\">edit on github</a> / ");
 			content.append("<span style=\"cursor: pointer; \" id=\"" + showId + "\" onclick=\"" + showJS
 					+ "\">show</span> / ");
@@ -103,11 +103,14 @@ public class DocumentationFilter extends BaseFilter {
 			content.append("\" width=\"100%\" height=\"80%\" > </iframe>");
 		} else {
 			content.append("<span style=\"float:right; \">");
-			String createURLPrefix = StringUtil.replace(this.getConfiguration().repositoryURLPrefix(), "/blob/", "/new/");
+			String createURLPrefix = StringUtil.replace(this.contentInitializer.getRepositoryURLPrefix(), "/blob/", "/new/");
 			content.append("<a href=\"" 
 					+ createURLPrefix
 					+ "?filename="
-					+ getSuggestedFile(request) + "\" target=\"_blank\">create on github</a>");
+					+ getSuggestedFile(request)
+					+ "&value="
+					+ HtmlUtil.escapeURL(contentInitializer.generateMarkdown(request, getSuggestedFile(request)))
+					+ "\" target=\"_blank\">create on github</a>");
 			content.append("</span>");
 		}
 		content.append(portletDocumentation.portletId);

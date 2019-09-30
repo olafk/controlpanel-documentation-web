@@ -2006,6 +2006,12 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "com.liferay.organizations.service.internal.configuration.OrganizationTypeConfiguration"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationConfiguration..html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationConfiguration"
 			}
 		]
 	},

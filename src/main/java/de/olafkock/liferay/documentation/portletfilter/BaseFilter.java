@@ -13,6 +13,8 @@ import javax.portlet.filter.FilterChain;
 import javax.portlet.filter.FilterConfig;
 import javax.portlet.filter.RenderFilter;
 
+import de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationConfiguration;
+
 /**
  * Just common functionality for the PortletFilters in this module, that I
  * didn't want to duplicate...
@@ -86,6 +88,10 @@ public abstract class BaseFilter implements RenderFilter {
 				return HtmlUtil.escape(simplify(result));
 		}
 		return "-";
+	}
+	
+	protected ControlPanelDocumentationConfiguration getConfiguration() {
+		return ContentInitializer.getConfiguration();
 	}
 
 	private String simplify(String result) {

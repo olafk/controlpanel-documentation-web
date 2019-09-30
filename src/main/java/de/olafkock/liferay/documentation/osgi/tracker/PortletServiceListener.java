@@ -1,12 +1,8 @@
 package de.olafkock.liferay.documentation.osgi.tracker;
 
-import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Collection;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -39,11 +35,11 @@ final class PortletServiceListener implements ServiceListener {
 
 	PortletServiceListener(BundleContext bundleContext) {
 		this.bundleContext = bundleContext;
-		this.config = PortletDocumentationFactory.getConfiguration();
+		this.content = PortletDocumentationFactory.getConfiguration();
 		
 		// Temporary feature to generate new documentation pages for all
 		// pages that have been seen and might not have configuration yet.
-		this.contentInitializer = new ContentInitializer(config);
+		this.contentInitializer = new ContentInitializer(content);
 	}
 	
 	@Override
@@ -52,10 +48,10 @@ final class PortletServiceListener implements ServiceListener {
 		// case: try again to get our config before registering services
 		// (in case we couldn't get our configuration yet, there won't be
 		// any services that we could register anyway)
-		if(this.config == null) {
-			this.config = PortletDocumentationFactory.getConfiguration();
+		if(this.content == null) {
+			this.content = PortletDocumentationFactory.getConfiguration();
 			// temporary content generator
-			this.contentInitializer = new ContentInitializer(config);
+			this.contentInitializer = new ContentInitializer(content);
 		}
 		switch (event.getType()) {
 		case ServiceEvent.REGISTERED:
@@ -83,7 +79,7 @@ final class PortletServiceListener implements ServiceListener {
 	 */
 	private void registerFilter(ServiceReference<?> portletServiceReference) {
 		String portletName = (String) portletServiceReference.getProperty("javax.portlet.name");
-		PortletDocumentation conf = (config!=null)?config.get(portletName):null;
+		PortletDocumentation conf = (content!=null)?content.get(portletName):null;
 		RenderFilter portletFilter;
 		if(conf != null) {
 			portletFilter = new DocumentationFilter(conf, contentInitializer);
@@ -105,7 +101,7 @@ final class PortletServiceListener implements ServiceListener {
 		// Temporary feature: When shutting down, generate content.json for all
 		// pages that could have been filtered
 		if(services.isEmpty()) {
-//			dumpConfig();
+			contentInitializer.dumpConfig();
 		}
 	}
 
@@ -117,33 +113,8 @@ final class PortletServiceListener implements ServiceListener {
 		return result;
 	}
 
-	/**
-	 * temporary feature: Create json configuration for all pages that have been
-	 * seen so far.
-	 */
-	@SuppressWarnings("unused")
-	private void dumpConfig() {
-		log.debug("dumping Config to /tmp/content.json");
-		PortletDocumentation[] docs = new PortletDocumentation[config.size()];
-		int i = 0;
-		
-		Collection<PortletDocumentation> configs = config.values();
-		for (PortletDocumentation doc : configs) {
-			docs[i++] = doc;
-		}
-		String json = JSONFactoryUtil.looseSerializeDeep(docs);
-		PrintWriter writer;
-		try {
-			writer = new PrintWriter("/tmp/content.json");
-			writer.println(json);
-			writer.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace(System.err);
-		}
-	}
-
 	private BundleContext bundleContext;
 	private HashMap<String, ServiceRegistration<?>> services = new HashMap<String, ServiceRegistration<?>>();
-	private Map<String, PortletDocumentation> config;
+	private Map<String, PortletDocumentation> content;
 	private ContentInitializer contentInitializer;
 }

@@ -3,6 +3,7 @@ package de.olafkock.liferay.documentation.portletfilter;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.StringUtil;
 
 import javax.portlet.RenderRequest;
 import javax.servlet.ServletRequest;
@@ -88,7 +89,8 @@ public class DocumentationFilter extends BaseFilter {
 		if (uc != null && uc.documentationURL != null && !uc.documentationURL.isBlank()) {
 			content.append((uc == null) ? "" : "More documentation and pointers ");
 			content.append("<span style=\"float:right; \">");
-			content.append("<a href=\"https://github.com/olafk/controlpanel-documentation-docs/blob/master/md/72en/"
+			content.append("<a href=\"" 
+					+ this.getConfiguration().repositoryURLPrefix()
 					+ getSuggestedFile(request) + "\" target=\"_blank\">edit on github</a> / ");
 			content.append("<span style=\"cursor: pointer; \" id=\"" + showId + "\" onclick=\"" + showJS
 					+ "\">show</span> / ");
@@ -99,6 +101,14 @@ public class DocumentationFilter extends BaseFilter {
 			content.append("<iframe src=\"");
 			content.append(HtmlUtil.escape(uc.documentationURL));
 			content.append("\" width=\"100%\" height=\"80%\" > </iframe>");
+		} else {
+			content.append("<span style=\"float:right; \">");
+			String createURLPrefix = StringUtil.replace(this.getConfiguration().repositoryURLPrefix(), "/blob/", "/new/");
+			content.append("<a href=\"" 
+					+ createURLPrefix
+					+ "?filename="
+					+ getSuggestedFile(request) + "\" target=\"_blank\">create on github</a>");
+			content.append("</span>");
 		}
 		content.append(portletDocumentation.portletId);
 		content.append(" | ");

@@ -683,20 +683,20 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_UsersAdminPortlet.html",
-				"mediaType": "audio",
-				"mediaURL": "https:\/\/www.olafkock.de\/tmp\/documentation-placeholder.mp3",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "-"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_UsersAdminPortlet\/view-all-users.html",
-				"mediaType": "audio",
-				"mediaURL": "https:\/\/www.olafkock.de\/tmp\/documentation-placeholder.mp3",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "view-all-users"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_UsersAdminPortlet\/view-all-organizations.html",
-				"mediaType": "audio",
-				"mediaURL": "https:\/\/www.olafkock.de\/tmp\/documentation-placeholder.mp3",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "view-all-organizations"
 			}
 		]
@@ -706,8 +706,8 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_security_service_access_policy_web_portlet_SAPPortlet.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "-"
 			}
 		]
@@ -750,8 +750,8 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_user_groups_admin_web_portlet_UserGroupsAdminPortlet.html",
-				"mediaType": "video",
-				"mediaURL": "https:\/\/www.olafkock.de\/download\/0001-0064.mp4",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "-"
 			}
 		]
@@ -959,50 +959,50 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet.html",
-				"mediaType": "video",
-				"mediaURL": "https:\/\/www.olafkock.de\/download\/0001-0064.mp4",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "-"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.liferay.document.library.document.conversion.internal.configuration.OpenOfficeConfiguration.html",
-				"mediaType": "video",
-				"mediaURL": "https:\/\/www.olafkock.de\/download\/0001-0064.mp4",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "com.liferay.document.library.document.conversion.internal.configuration.OpenOfficeConfiguration"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.liferay.document.library.repository.cmis.configuration.CMISRepositoryConfiguration.html",
-				"mediaType": "video",
-				"mediaURL": "https:\/\/www.olafkock.de\/download\/0001-0064.mp4",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "com.liferay.document.library.repository.cmis.configuration.CMISRepositoryConfiguration"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.liferay.change.tracking.configuration.CTConfiguration.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "com.liferay.change.tracking.configuration.CTConfiguration"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.liferay.portal.store.file.system.configuration.AdvancedFileSystemStoreConfiguration.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "com.liferay.portal.store.file.system.configuration.AdvancedFileSystemStoreConfiguration"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.liferay.portal.store.file.system.configuration.FileSystemStoreConfiguration.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "com.liferay.portal.store.file.system.configuration.FileSystemStoreConfiguration"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.liferay.portal.store.s3.configuration.S3StoreConfiguration.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "com.liferay.portal.store.s3.configuration.S3StoreConfiguration"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.frontend.js.minifier.configuration.YahooJavaScriptMinifierConfiguration.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "com.frontend.js.minifier.configuration.YahooJavaScriptMinifierConfiguration"
 			},
 			{
@@ -2098,8 +2098,8 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_roles_admin_web_portlet_RolesAdminPortlet.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "-"
 			},
 			{
@@ -2143,8 +2143,8 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_instances_web_portlet_PortalInstancesPortlet.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "-"
 			}
 		]
@@ -2154,8 +2154,8 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_server_admin_web_portlet_ServerAdminPortlet.html",
-				"mediaType": "youtube",
-				"mediaURL": "https:\/\/www.youtube-nocookie.com\/embed\/BYCmW4uwlbo",
+				"mediaType": null,
+				"mediaURL": null,
 				"secondary": "-"
 			},
 			{

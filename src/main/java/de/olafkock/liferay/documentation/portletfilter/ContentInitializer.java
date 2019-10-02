@@ -63,7 +63,7 @@ public class ContentInitializer {
 		result.append("## Related Topics\n\n");
 		result.append("## Community Resources\n\n");
 		result.append("### Contribute\n\n");
-		result.append("[Edit this file on github](" + _myConfiguration.contentURLPrefix() + filename + ")");
+		result.append("[Edit this file on github](" + _myConfiguration.repositoryURLPrefix() + filename + ")");
 		return result.toString();
 	}
 	

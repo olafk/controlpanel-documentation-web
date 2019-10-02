@@ -38,6 +38,8 @@ public class PortletDocumentationFactory {
 				log.info("read " + json.length() + " characters config from " + location);
 			} catch (IOException e) {
 				log.error(e);
+			} catch (NullPointerException e) {
+				return null; // not yet initialized
 			}
 			if(json == null || json.length() < 200) {
 				InputStream configuration = PortletDocumentationFactory.class.getResourceAsStream("/content.json");

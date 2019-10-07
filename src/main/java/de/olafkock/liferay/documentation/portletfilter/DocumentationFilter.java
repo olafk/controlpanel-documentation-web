@@ -1,9 +1,13 @@
 package de.olafkock.liferay.documentation.portletfilter;
 
+import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.ResourceBundleUtil;
 import com.liferay.portal.kernel.util.StringUtil;
+
+import java.util.ResourceBundle;
 
 import javax.portlet.RenderRequest;
 import javax.servlet.ServletRequest;
@@ -86,22 +90,32 @@ public class DocumentationFilter extends BaseFilter {
 		content.append("\" style=\"background-color:#cccccc; " + "position:fixed; " + "bottom:0; "
 				+ "width:auto; height:4em; max-width:50%; " + "transition-property: size top height; "
 				+ "transition-duration: 1s; " + "transition-timing-function: ease; " + "padding:10px;\">");
+		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
 		if (uc != null && uc.documentationURL != null && !uc.documentationURL.isBlank()) {
-			content.append((uc == null) ? "" : "More documentation and pointers ");
+			
+			String moreDocumentation = LanguageUtil.get(bundle, "more-documentation-and-pointers");
+			String editOnGithub = LanguageUtil.get(bundle, "edit-on-github");
+			String show = LanguageUtil.get(bundle, "show[command]");
+			String hide = LanguageUtil.get(bundle, "hide[command]");
+
+			content.append((uc == null) ? "" : moreDocumentation);
 			content.append("<span style=\"float:right; \">");
 			content.append("<a href=\"" 
 					+ this.contentInitializer.getRepositoryURLPrefix()
-					+ getSuggestedFile(request) + "\" target=\"_blank\">edit on github</a> / ");
+					+ getSuggestedFile(request) + "\" target=\"_blank\">" + editOnGithub + "</a> / ");
 			content.append("<span style=\"cursor: pointer; \" id=\"" + showId + "\" onclick=\"" + showJS
-					+ "\">show</span> / ");
+					+ "\">" + show + "</span> / ");
 			content.append(
-					"<span style=\"cursor: pointer; \" id=\"" + hideId + "\" onclick=\"" + hideJS + "\">hide</span>");
+					"<span style=\"cursor: pointer; \" id=\"" + hideId + "\" onclick=\"" + hideJS + "\">" 
+							+ hide + "</span>");
 			content.append("</span>");
 			content.append("<br/>");
 			content.append("<iframe src=\"");
 			content.append(HtmlUtil.escape(uc.documentationURL));
 			content.append("\" width=\"100%\" height=\"80%\" > </iframe>");
 		} else {
+			String createOnGithub = LanguageUtil.get(bundle, "cpd-create-on-github");
+
 			content.append("<span style=\"float:right; \">");
 			String createURLPrefix = StringUtil.replace(this.contentInitializer.getRepositoryURLPrefix(), "/blob/", "/new/");
 			content.append("<a href=\"" 
@@ -110,7 +124,7 @@ public class DocumentationFilter extends BaseFilter {
 					+ getSuggestedFile(request)
 					+ "&value="
 					+ HtmlUtil.escapeURL(contentInitializer.generateMarkdown(request, getSuggestedFile(request)))
-					+ "\" target=\"_blank\">create on github</a>");
+					+ "\" target=\"_blank\">" + createOnGithub + "</a>");
 			content.append("</span>");
 		}
 		content.append(portletDocumentation.portletId);

@@ -99,7 +99,7 @@ public class DocumentationFilter extends BaseFilter {
 			String hide = LanguageUtil.get(bundle, "hide[command]");
 
 			content.append((uc == null) ? "" : moreDocumentation);
-			content.append("<span style=\"float:right; \">");
+			content.append("<span style=\"float:right; \">&nbsp;");
 			content.append("<a href=\"" 
 					+ this.contentInitializer.getRepositoryURLPrefix()
 					+ getSuggestedFile(request) + "\" target=\"_blank\">" + editOnGithub + "</a> / ");
@@ -114,9 +114,9 @@ public class DocumentationFilter extends BaseFilter {
 			content.append(HtmlUtil.escape(uc.documentationURL));
 			content.append("\" width=\"100%\" height=\"80%\" > </iframe>");
 		} else {
-			String createOnGithub = LanguageUtil.get(bundle, "cpd-create-on-github");
+			String createOnGithub = LanguageUtil.get(bundle, "create-on-github");
 
-			content.append("<span style=\"float:right; \">");
+			content.append("<span style=\"float:right; \">&nbsp;");
 			String createURLPrefix = StringUtil.replace(this.contentInitializer.getRepositoryURLPrefix(), "/blob/", "/new/");
 			content.append("<a href=\"" 
 					+ createURLPrefix

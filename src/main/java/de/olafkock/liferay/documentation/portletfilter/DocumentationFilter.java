@@ -91,7 +91,7 @@ public class DocumentationFilter extends BaseFilter {
 				+ "width:auto; height:4em; max-width:50%; " + "transition-property: size top height; "
 				+ "transition-duration: 1s; " + "transition-timing-function: ease; " + "padding:10px;\">");
 		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
-		if (uc != null && uc.documentationURL != null && !uc.documentationURL.isBlank()) {
+		if (uc != null && uc.documentationURL != null && !"".equals(uc.documentationURL.trim())) {
 			
 			String moreDocumentation = LanguageUtil.get(bundle, "more-documentation-and-pointers");
 			String editOnGithub = LanguageUtil.get(bundle, "edit-on-github");

@@ -1,7 +1,13 @@
 package de.olafkock.liferay.documentation.portletfilter;
 
+import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
+import com.liferay.portal.kernel.util.ResourceBundleUtil;
+import com.liferay.portal.kernel.util.StringUtil;
+
+import java.util.ResourceBundle;
 
 import javax.portlet.RenderRequest;
 import javax.servlet.ServletRequest;
@@ -27,24 +33,42 @@ public class PlaceholderFilter extends BaseFilter {
 	protected String getHeaderContent(RenderRequest request) {
 //		HttpServletRequest hsr = PortalUtil.getHttpServletRequest(request);
 //		ServletRequest sr = PortalUtil.getOriginalServletRequest(hsr);
-		String temp = " "; // + sr.getParameter("p_p_state");
-
-		String string = "<div style=\"float:right; "
-				+ "background-color:#ffcccc; "
-				+ "line-height:1.5; "
-				+ "z-index:99;\">" 
-				+ portletName 
-				+ "<br/>" 
-				+ getSecondaryTopic(request) 
-				+ temp
-				+ "</div>";
-		return string;
+//		String temp = " "; // + sr.getParameter("p_p_state");
+//
+//		String string = "<div style=\"float:right; "
+//				+ "background-color:#ffcccc; "
+//				+ "line-height:1.5; "
+//				+ "z-index:99;\">" 
+//				+ portletName 
+//				+ "<br/>" 
+//				+ getSecondaryTopic(request) 
+//				+ temp
+//				+ "</div>";
+//		return string;
+		return "";
 	}
 
 	@Override
 	protected String getFooterContent(RenderRequest request) {
-		return "<div style=\"background-color:#ffcccc; position:fixed; bottom:0; width:auto; height:3em; padding:10px;\">"
-				+ portletName + "<br/>" + getSecondaryTopic(request) + "</div>";
+		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
+		String createOnGithub = LanguageUtil.get(bundle, "create-on-github");
+		StringBuffer content = new StringBuffer();
+		content.append("<div style=\"background-color:#ffcccc; position:fixed; bottom:0; width:auto; height:3em; padding:10px;\">");
+		content.append("<span style=\"float:right; \">&nbsp;");
+		String createURLPrefix = StringUtil.replace(this.contentInitializer.getRepositoryURLPrefix(), "/blob/", "/new/");
+		content.append("<a href=\"" 
+				+ createURLPrefix
+				+ "?filename="
+				+ getSuggestedFile(request)
+				+ "&value="
+				+ HtmlUtil.escapeURL(contentInitializer.generateMarkdown(request, getSuggestedFile(request)))
+				+ "\" target=\"_blank\">" + createOnGithub + "</a>");
+		content.append("</span>");
+		content.append(portletName);
+		content.append("<br/>");
+		content.append(getSecondaryTopic(request));
+		content.append("</div>");
+		return content.toString();
 	}
 
 	protected boolean isFiltered(RenderRequest request, ThemeDisplay themeDisplay) {

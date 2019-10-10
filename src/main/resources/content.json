@@ -683,8 +683,8 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_UsersAdminPortlet.html",
-				"mediaType": null,
-				"mediaURL": null,
+				"mediaType": "video",
+				"mediaURL": "https:\/\/www.olafkock.de\/download\/0001-0064.mp4",
 				"secondary": "-"
 			},
 			{
@@ -698,6 +698,23 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "view-all-organizations"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_portal_workflow_kaleo_designer_web_portlet_KaleoDesignerPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_kaleo_designer_web_portlet_KaleoDesignerPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_kaleo_designer_web_portlet_KaleoDesignerPortlet\/designer_edit_kaleo_definition_version.jsp.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "designer_edit_kaleo_definition_version.jsp"
 			}
 		]
 	},
@@ -2304,6 +2321,35 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "-"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_portal_workflow_web_portlet_ControlPanelWorkflowPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_web_portlet_ControlPanelWorkflowPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_web_portlet_ControlPanelWorkflowPortlet\/configuration.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "configuration"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_web_portlet_ControlPanelWorkflowPortlet\/workflows.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "workflows"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_web_portlet_ControlPanelWorkflowPortlet\/view.jsp.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "view.jsp"
 			}
 		]
 	},

@@ -714,13 +714,13 @@
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_UsersAdminPortlet.html",
 				"mediaType": "video",
-				"mediaURL": "https:\/\/www.olafkock.de\/download\/0001-0064.mp4",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media\/users-and-organizations-users.mp4",
 				"secondary": "-"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_UsersAdminPortlet\/view-all-users.html",
-				"mediaType": null,
-				"mediaURL": null,
+				"mediaType": "video",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media\/users-and-organizations-users.mp4",
 				"secondary": "view-all-users"
 			},
 			{

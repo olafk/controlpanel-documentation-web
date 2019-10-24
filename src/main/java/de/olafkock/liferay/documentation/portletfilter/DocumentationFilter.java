@@ -31,8 +31,13 @@ public class DocumentationFilter extends BaseFilter {
 	private final String elementId;
 	private final String showId;
 	private final String hideId;
+	private final String videoId;
+	private final String containerId;
 	private final String showJS;
 	private final String hideJS;
+	private final String largerVideoJS;
+	private final String smallerVideoJS;
+	private final String hideVideoJS;
 
 	public DocumentationFilter(PortletDocumentation portletDocumentation, ContentInitializer contentInitializer) {
 		super(contentInitializer);
@@ -41,12 +46,35 @@ public class DocumentationFilter extends BaseFilter {
 		elementId = namespace + "_additionalDocumentation";
 		showId = elementId + "_show";
 		hideId = elementId + "_hide";
+		videoId = elementId + "_video";
+		containerId = elementId + "_container";
 		showJS = "document.getElementById('" + elementId + "').style.height='50%';" + "document.getElementById('"
 				+ showId + "').style.color='#999999';" + "document.getElementById('" + hideId
 				+ "').style.color='#000000';";
 		hideJS = "document.getElementById('" + elementId + "').style.height='2em';" + "document.getElementById('"
 				+ showId + "').style.color='#000000';" + "document.getElementById('" + hideId
 				+ "').style.color='#999999';";
+		largerVideoJS = "var videoElement = document.getElementById('" + videoId + "');"
+				+ "videoElement.parentNode.parentNode.style.position = 'absolute';"
+				+ "videoElement.style.maxHeight='24em'; "
+				+ "videoElement.style.removeProperty('margin-bottom');"  
+				+ "var containerElement = document.getElementById('" + containerId + "');"
+				+ "containerElement.style.removeProperty('height');"
+				+ ";";
+		smallerVideoJS = "var videoElement = document.getElementById('" + videoId + "');"
+				+ "videoElement.parentNode.parentNode.style.position = 'relative';"
+				+ "videoElement.style.maxHeight='8em'; "
+				+ "videoElement.style.removeProperty('margin-bottom');"  
+				+ "var containerElement = document.getElementById('" + containerId + "');"
+				+ "containerElement.style.removeProperty('height');"
+				;
+		hideVideoJS = "var videoElement = document.getElementById('" + videoId + "');"
+				+ "videoElement.parentNode.parentNode.style.position = 'relative';"
+				+ "videoElement.style.maxHeight='2em';"
+				+ "videoElement.style.marginBottom='-0.8em';"  
+				+ "var containerElement = document.getElementById('" + containerId + "');"
+				+ "containerElement.style.height = containerElement.nextElementSibling.offsetHeight + 'px';"
+				;
 	}
 
 	protected String getHeaderContent(RenderRequest request) {
@@ -54,24 +82,52 @@ public class DocumentationFilter extends BaseFilter {
 		URLConfig uc = portletDocumentation.getSecondaryUrlConfig(secondaryTopic);
 		if (uc == null)
 			return "";
+
+		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
+		String larger = LanguageUtil.get(bundle, "larger[command]");
+		String smaller = LanguageUtil.get(bundle, "smaller[command]");
+		String min = LanguageUtil.get(bundle, "min[command]");
+
 		
-		String result = "<div style=\"float:right; line-height:1.5; padding-bottom:0;" + "z-index:99;\">";
+		String result = "<div style=\"float:right; line-height:1.5; padding-bottom:0; z-index:99;\""
+				+ "id=\"" + containerId + "\" >";
 		if (null == uc.mediaType) {
 			// ignore
 		} else if ("audio".equals(uc.mediaType)) {
-			result += "<audio controls=\"play\" preload=\"metadata\" style=\" width:300px; max-height:2.5em; \""
+			result += "<audio"
+					+ " controls=\"play\""
+					+ " preload=\"metadata\""
+					+ " style=\"width:300px; max-height:2.5em; \""
 					+ " onplay=\"" + showJS + "\">\n" 
-					+ "	<source src=\"" + uc.mediaURL + "\" type=\"audio/mpeg\">\n" 
+					+ "	<source"
+					+ " src=\"" + uc.mediaURL + "\" "
+					+ "type=\"audio/mpeg\">\n" 
 					+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Audio documentation</a>\n" 
 					+ "</audio>";
 		} else if ("video".equals(uc.mediaType)) {
-			result += "<video controls preload=\"metadata\" style=\" z-index:1000; top:2em; right:0px; max-height:8em; padding-bottom:0;\" "
-					+ "onplay=\"" + showJS + "\">\n" 
-					+ "	<source src=\"" + uc.mediaURL + "\" type=\"video/mp4\">\n" 
+			result += "<div style=\"position:relative; display:block; z-index:1000; top:0; right:0;\""
+					+ " class=\"navigation-bar-secondary\">"
+					+ "<span style=\"display:block;\">"
+					+ "<video"
+					+ " controls preload=\"metadata\""
+					+ " style=\"top:2em; right:0px; max-height:8em; padding-bottom:0;"
+					    + "transition-property: size top height; transition-duration: 1s; transition-timing-function: ease;\""
+					+ " id=\"" + videoId + "\""
+					+ " onplay=\"" + showJS + "\">\n" 
+					+ "<source"
+					+ " src=\"" + uc.mediaURL + "\""
+					+ " type=\"video/mp4\">\n" 
 					+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Video documentation</a>\n" 
-					+ "</video>";
+					+ "</video></span>"
+					+ "<span style=\"display:block; z-index:999; font-size:0.8rem; line-height:1rem; text-align:right;\">"
+					+ "<span onclick=\"" + largerVideoJS + "\" style=\"cursor:pointer;\">" + larger + "</span> / "
+					+ "<span onclick=\"" + smallerVideoJS + "\" style=\"cursor:pointer;\">" + smaller + "</span> / "
+					+ "<span onclick=\"" + hideVideoJS + "\" style=\"cursor:pointer;\">" + min + "</span>"
+					+ "</span>"
+					+ "</div>"
+					;
 		} else if ("youtube".equals(uc.mediaType)) {
-			result += "<iframe max-width=\"300\" max-height=\"8em\" src=\"" + uc.mediaURL
+			result += "<iframe id=\"" + videoId + "\" max-width=\"300\" max-height=\"8em\" src=\"" + uc.mediaURL
 					+ "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; "
 					+ "gyroscope; picture-in-picture\" allowfullscreen></iframe>\n";
 		} else {
@@ -87,32 +143,52 @@ public class DocumentationFilter extends BaseFilter {
 
 		StringBuilder content = new StringBuilder("<div id=\"");
 		content.append(elementId);
-		content.append("\" style=\"background-color:#cccccc; " + "position:fixed; " + "bottom:0; "
-				+ "width:auto; height:4em; max-width:50%; " + "transition-property: size top height; "
-				+ "transition-duration: 1s; " + "transition-timing-function: ease; " + "padding:10px;\">");
+		content.append("\" style=\"background-color:#cccccc; position:fixed; bottom:0; "
+				+ "width:auto; height:4em; width:40%; min-height:1em; " + "transition-property: size top height; "
+				+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;\">");
 		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
 		if (uc != null && uc.documentationURL != null && !"".equals(uc.documentationURL.trim())) {
 			
 			String moreDocumentation = LanguageUtil.get(bundle, "more-documentation-and-pointers");
 			String editOnGithub = LanguageUtil.get(bundle, "edit-on-github");
-			String show = LanguageUtil.get(bundle, "show[command]");
+			String openInNewWindow = LanguageUtil.get(bundle, "open-in-new-window");
+			String clickDown = LanguageUtil.get(bundle, "click-to-slide-down");
+			String clickUp = LanguageUtil.get(bundle, "click-to-slide-up");
+			String edit = LanguageUtil.get(bundle, "edit[command]");
+			String open = LanguageUtil.get(bundle, "open[command]");
 			String hide = LanguageUtil.get(bundle, "hide[command]");
 
-			content.append((uc == null) ? "" : moreDocumentation);
-			content.append("<span style=\"float:right; \">&nbsp;");
+			content.append((uc == null) ? "" : "<span "
+					+ " style=\"cursor: pointer; \""
+					+ " id=\"" + showId + "\""
+					+ " onclick=\"" + showJS + "\""
+					+ " title=\"" + clickUp + "\">" 
+					+ moreDocumentation 
+					+ "</span> / ");
+			
+//			content.append("<span style=\"float:right; \">&nbsp;");
+			content.append("<a href=\"" + HtmlUtil.escape(uc.documentationURL) + "\""
+					+ " target=\"_blank\"" 
+					+ " title=\"" + openInNewWindow + "\" >" + open + "</a> / ");
 			content.append("<a href=\"" 
 					+ this.contentInitializer.getRepositoryURLPrefix()
-					+ getSuggestedFile(request) + "\" target=\"_blank\">" + editOnGithub + "</a> / ");
-			content.append("<span style=\"cursor: pointer; \" id=\"" + showId + "\" onclick=\"" + showJS
-					+ "\">" + show + "</span> / ");
+					+ getSuggestedFile(request) + "\""
+					+ " target=\"_blank\""
+					+ " title=\"" + editOnGithub + "\">" 
+					+ edit 
+					+ "</a> / ");
 			content.append(
-					"<span style=\"cursor: pointer; \" id=\"" + hideId + "\" onclick=\"" + hideJS + "\">" 
-							+ hide + "</span>");
-			content.append("</span>");
+					"<span style=\"cursor: pointer; \""
+					+ " id=\"" + hideId + "\""
+					+ " onclick=\"" + hideJS + "\""
+					+ " title=\"" + clickDown + "\">" 
+					+ hide 
+					+ "</span>");
+//			content.append("</span>");
 			content.append("<br/>");
 			content.append("<iframe src=\"");
 			content.append(HtmlUtil.escape(uc.documentationURL));
-			content.append("\" width=\"100%\" height=\"80%\" > </iframe>");
+			content.append("\" width=\"100%\" height=\"90%\" > </iframe>");
 		} else {
 			String createOnGithub = LanguageUtil.get(bundle, "create-on-github");
 
@@ -126,10 +202,10 @@ public class DocumentationFilter extends BaseFilter {
 					+ HtmlUtil.escapeURL(contentInitializer.generateMarkdown(request, getSuggestedFile(request)))
 					+ "\" target=\"_blank\">" + createOnGithub + "</a>");
 			content.append("</span>");
+			content.append(portletDocumentation.portletId);
+			content.append(" | ");
+			content.append(getSecondaryTopic(request));
 		}
-		content.append(portletDocumentation.portletId);
-		content.append(" | ");
-		content.append(getSecondaryTopic(request));
 		content.append("</div>");
 
 		return content.toString();

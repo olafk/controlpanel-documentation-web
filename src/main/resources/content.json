@@ -4,9 +4,15 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_password_policies_admin_web_portlet_PasswordPoliciesAdminPortlet.html",
-				"mediaType": null,
-				"mediaURL": null,
+				"mediaType": "video",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media/passwordpolicies.mp4",
 				"secondary": "-"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_password_policies_admin_web_portlet_PasswordPoliciesAdminPortlet\/edit_password_policy.jsp.html",
+				"mediaType": "video",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media/passwordpolicies.mp4",
+				"secondary": "edit_password_policy.jsp"
 			}
 		]
 	},
@@ -725,8 +731,8 @@
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_UsersAdminPortlet\/view-all-organizations.html",
-				"mediaType": null,
-				"mediaURL": null,
+				"mediaType": "video",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media\/users-and-organizations-organizations.mp4",
 				"secondary": "view-all-organizations"
 			}
 		]
@@ -797,9 +803,15 @@
 		"urlConfig": [
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_user_groups_admin_web_portlet_UserGroupsAdminPortlet.html",
-				"mediaType": null,
-				"mediaURL": null,
+				"mediaType": "video",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media\/usergroups.mp4",
 				"secondary": "-"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_user_groups_admin_web_portlet_UserGroupsAdminPortlet\/edit_user_group.jsp.html",
+				"mediaType": "video",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media\/usergroups.mp4",
+				"secondary": "edit_user_group.jsp"
 			}
 		]
 	},

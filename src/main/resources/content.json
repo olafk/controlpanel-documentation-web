@@ -5,13 +5,13 @@
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_password_policies_admin_web_portlet_PasswordPoliciesAdminPortlet.html",
 				"mediaType": "video",
-				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media/passwordpolicies.mp4",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media/password-policies.mp4",
 				"secondary": "-"
 			},
 			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_password_policies_admin_web_portlet_PasswordPoliciesAdminPortlet\/edit_password_policy.jsp.html",
 				"mediaType": "video",
-				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media/passwordpolicies.mp4",
+				"mediaURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/media/password-policies.mp4",
 				"secondary": "edit_password_policy.jsp"
 			}
 		]

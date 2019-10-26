@@ -1,5 +1,5 @@
 Bundle-Activator: de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationServiceTrackerActivator
 Bundle-Name: controlpanel-documentation-web
 Bundle-SymbolicName: de.olafkock.liferay.controlpaneldocumentation
-Bundle-Version: 1.0.6
+Bundle-Version: 1.0.7.${tstamp}
 -metatype: *

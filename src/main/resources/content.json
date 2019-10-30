@@ -684,6 +684,24 @@
 				"secondary": "pages"
 			},
 			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_layout_admin_web_portlet_GroupPagesPortlet\/select_layout_page_template_entry.jsp.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "select_layout_page_template_entry.jsp"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_layout_admin_web_portlet_GroupPagesPortlet\/layout_edit_layout.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "layout_edit_layout"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_layout_admin_web_portlet_GroupPagesPortlet\/layout_edit_layout_page_template_collection.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "layout_edit_layout_page_template_collection"
+			},
+			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_layout_admin_web_portlet_GroupPagesPortlet\/display-page-templates.html",
 				"mediaType": null,
 				"mediaURL": null,

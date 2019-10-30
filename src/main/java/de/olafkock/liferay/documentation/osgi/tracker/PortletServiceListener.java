@@ -105,7 +105,6 @@ final class PortletServiceListener implements ServiceListener {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	private Dictionary<String, Object> getServiceProperties(String portletName) {
 		Dictionary<String,Object> result = new Hashtable<String,Object>();
 		result.put("javax.portlet.name", portletName);

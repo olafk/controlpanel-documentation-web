@@ -220,6 +220,8 @@ public class DocumentationFilter extends BaseFilter {
 						"com_liferay_product_navigation_product_menu_web_portlet_ProductMenuPortlet")
 				&& ! portletDocumentation.portletId.equals(
 						"com_liferay_marketplace_store_web_portlet_MarketplaceStorePortlet")
+				&& ! portletDocumentation.portletId.equals(
+						"com_liferay_staging_processes_web_portlet_StagingProcessesPortlet")
 				&& ! "pop_up".equals(sr.getParameter("p_p_state"));
 		return doFilter;
 	}

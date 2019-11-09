@@ -40,4 +40,14 @@ public interface ControlPanelDocumentationConfiguration {
             required = false
         )	
 	public boolean generateContent();
+	
+	@Meta.AD(
+			deflt = "false",
+			description = "show-undocumented-keys-description",
+			name = "show-undocumented-keys",
+			required = false
+			)
+	public boolean showUndocumentedKeys();
+	
+	
 }

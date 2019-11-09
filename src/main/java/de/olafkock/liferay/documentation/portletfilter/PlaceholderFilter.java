@@ -50,6 +50,7 @@ public class PlaceholderFilter extends BaseFilter {
 
 	@Override
 	protected String getFooterContent(RenderRequest request) {
+		if( ! ContentInitializer.getConfiguration().showUndocumentedKeys()) return "";
 		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
 		String createOnGithub = LanguageUtil.get(bundle, "create-on-github");
 		StringBuffer content = new StringBuffer();

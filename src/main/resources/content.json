@@ -2109,7 +2109,7 @@
 				"secondary": "com.liferay.adaptive.media.document.library.thumbnails.internal.configuration.AMSystemImagesConfiguration"
 			},
 			{
-				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationConfiguration..html",
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationConfiguration.html",
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "de.olafkock.liferay.documentation.osgi.tracker.ControlPanelDocumentationConfiguration"

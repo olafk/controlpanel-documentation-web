@@ -49,5 +49,13 @@ public interface ControlPanelDocumentationConfiguration {
 			)
 	public boolean showUndocumentedKeys();
 	
+	@Meta.AD(
+			deflt = "8",
+			description = "default-video-height-description",
+			name = "default-video-height",
+			required = false
+			)
+	public int defaultVideoHeight();
+	
 	
 }

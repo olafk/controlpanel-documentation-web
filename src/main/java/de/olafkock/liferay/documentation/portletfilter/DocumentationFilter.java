@@ -105,27 +105,31 @@ public class DocumentationFilter extends BaseFilter {
 					+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Audio documentation</a>\n" 
 					+ "</audio>";
 		} else if ("video".equals(uc.mediaType)) {
-			result += "<div style=\"position:relative; display:block; z-index:1000; top:0; right:0;\""
-					+ " class=\"navigation-bar-secondary\">"
-					+ "<span style=\"display:block;\">"
-					+ "<video"
-					+ " controls preload=\"metadata\""
-					+ " style=\"top:2em; right:0px; max-height:8em; padding-bottom:0;"
-					    + "transition-property: size top height; transition-duration: 1s; transition-timing-function: ease;\""
-					+ " id=\"" + videoId + "\""
-					+ " onplay=\"" + showJS + "\">\n" 
-					+ "<source"
-					+ " src=\"" + uc.mediaURL + "\""
-					+ " type=\"video/mp4\">\n" 
-					+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Video documentation</a>\n" 
-					+ "</video></span>"
-					+ "<span style=\"display:block; z-index:999; font-size:0.8rem; line-height:1rem; text-align:right;\">"
-					+ "<span onclick=\"" + largerVideoJS + "\" style=\"cursor:pointer;\">" + larger + "</span> / "
-					+ "<span onclick=\"" + smallerVideoJS + "\" style=\"cursor:pointer;\">" + smaller + "</span> / "
-					+ "<span onclick=\"" + hideVideoJS + "\" style=\"cursor:pointer;\">" + min + "</span>"
-					+ "</span>"
-					+ "</div>"
-					;
+			int videoHeight = Math.max(0, ContentInitializer.getConfiguration().defaultVideoHeight());
+			if(videoHeight > 0) {
+				videoHeight = Math.max(videoHeight, 2);
+				result += "<div style=\"position:relative; display:block; z-index:1000; top:0; right:0;\""
+						+ " class=\"navigation-bar-secondary\">"
+						+ "<span style=\"display:block;\">"
+						+ "<video"
+						+ " controls preload=\"metadata\""
+						+ " style=\"top:2em; right:0px; max-height:" + videoHeight + "em; padding-bottom:0;"
+						    + "transition-property: size top height; transition-duration: 1s; transition-timing-function: ease;\""
+						+ " id=\"" + videoId + "\""
+						+ " onplay=\"" + showJS + "\">\n" 
+						+ "<source"
+						+ " src=\"" + uc.mediaURL + "\""
+						+ " type=\"video/mp4\">\n" 
+						+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Video documentation</a>\n" 
+						+ "</video></span>"
+						+ "<span style=\"display:block; z-index:999; font-size:0.8rem; line-height:1rem; text-align:right;\">"
+						+ "<span onclick=\"" + largerVideoJS + "\" style=\"cursor:pointer;\">" + larger + "</span> / "
+						+ "<span onclick=\"" + smallerVideoJS + "\" style=\"cursor:pointer;\">" + smaller + "</span> / "
+						+ "<span onclick=\"" + hideVideoJS + "\" style=\"cursor:pointer;\">" + min + "</span>"
+						+ "</span>"
+						+ "</div>"
+						;
+			}
 		} else if ("youtube".equals(uc.mediaType)) {
 			result += "<iframe id=\"" + videoId + "\" max-width=\"300\" max-height=\"8em\" src=\"" + uc.mediaURL
 					+ "\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; "

@@ -125,6 +125,12 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "-"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_dynamic_data_mapping_web_portlet_PortletDisplayTemplatePortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "display"
 			}
 		]
 	},

@@ -2226,6 +2226,12 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "3"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_roles_admin_web_portlet_RolesAdminPortlet\/define-permissions.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "define-permissions"
 			}
 		]
 	},

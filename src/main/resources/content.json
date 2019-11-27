@@ -934,6 +934,12 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "alerts"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_announcements_web_portlet_AnnouncementsAdminPortlet\/announcements_edit_entry.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "announcements_edit_entry"
 			}
 		]
 	},

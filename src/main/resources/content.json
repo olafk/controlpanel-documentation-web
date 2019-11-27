@@ -2271,6 +2271,12 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "-"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_instances_web_portlet_PortalInstancesPortlet\/portal_instances_edit_instance.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "portal_instances_edit_instance"
 			}
 		]
 	},
@@ -2363,6 +2369,12 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "-"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_site_admin_web_portlet_SiteAdminPortlet\/site_select_site_initializer.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "site_select_site_initializer"
 			}
 		]
 	},

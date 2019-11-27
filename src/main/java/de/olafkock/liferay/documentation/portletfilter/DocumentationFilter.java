@@ -84,9 +84,9 @@ public class DocumentationFilter extends BaseFilter {
 			return "";
 
 		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
-		String larger = LanguageUtil.get(bundle, "larger[command]");
-		String smaller = LanguageUtil.get(bundle, "smaller[command]");
-		String min = LanguageUtil.get(bundle, "min[command]");
+		String largerLabel = LanguageUtil.get(bundle, "larger[command]");
+		String smallerLabel = LanguageUtil.get(bundle, "smaller[command]");
+		String minLabel = LanguageUtil.get(bundle, "min[command]");
 
 		
 		String result = "<div style=\"float:right; line-height:1.5; padding-bottom:0; z-index:99;\""
@@ -123,9 +123,9 @@ public class DocumentationFilter extends BaseFilter {
 						+ "	<a href=\"" + uc.mediaURL + "\" target=\"_blank\">Video documentation</a>\n" 
 						+ "</video></span>"
 						+ "<span style=\"display:block; z-index:999; font-size:0.8rem; line-height:1rem; text-align:right;\">"
-						+ "<span onclick=\"" + largerVideoJS + "\" style=\"cursor:pointer;\">" + larger + "</span> / "
-						+ "<span onclick=\"" + smallerVideoJS + "\" style=\"cursor:pointer;\">" + smaller + "</span> / "
-						+ "<span onclick=\"" + hideVideoJS + "\" style=\"cursor:pointer;\">" + min + "</span>"
+						+ "<span onclick=\"" + largerVideoJS + "\" style=\"cursor:pointer;\">" + largerLabel + "</span> / "
+						+ "<span onclick=\"" + smallerVideoJS + "\" style=\"cursor:pointer;\">" + smallerLabel + "</span> / "
+						+ "<span onclick=\"" + hideVideoJS + "\" style=\"cursor:pointer;\">" + minLabel + "</span>"
 						+ "</span>"
 						+ "</div>"
 						;
@@ -145,56 +145,89 @@ public class DocumentationFilter extends BaseFilter {
 		String secondaryTopic = getSecondaryTopic(request);
 		URLConfig uc = portletDocumentation.getSecondaryUrlConfig(secondaryTopic);
 
-		StringBuilder content = new StringBuilder("<div id=\"");
-		content.append(elementId);
-		content.append("\" style=\"background-color:#cccccc; position:fixed; bottom:0; "
-				+ "width:auto; height:4em; width:40%; min-height:1em; " + "transition-property: size top height; "
-				+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;\">");
+		StringBuilder content = new StringBuilder();
+
 		ResourceBundle bundle = ResourceBundleUtil.getBundle(PortalUtil.getLocale(request), this.getClass());
 		if (uc != null && uc.documentationURL != null && !"".equals(uc.documentationURL.trim())) {
+			content.append("<div id=\"");
+			content.append(elementId);
+			content.append("\" style=\"background-color:#cccccc; position:fixed; bottom:0; "
+					+ "width:auto; height:4em; width:40%; min-height:1em; " 
+					+ "transition-property: size top height; "
+					+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;\">");
 			
-			String moreDocumentation = LanguageUtil.get(bundle, "more-documentation-and-pointers");
-			String editOnGithub = LanguageUtil.get(bundle, "edit-on-github");
-			String openInNewWindow = LanguageUtil.get(bundle, "open-in-new-window");
-			String clickDown = LanguageUtil.get(bundle, "click-to-slide-down");
-			String clickUp = LanguageUtil.get(bundle, "click-to-slide-up");
-			String edit = LanguageUtil.get(bundle, "edit[command]");
-			String open = LanguageUtil.get(bundle, "open[command]");
-			String hide = LanguageUtil.get(bundle, "hide[command]");
+			String moreDocumentationLabel = LanguageUtil.get(bundle, "more-documentation-and-pointers");
+			String editOnGithubLabel = LanguageUtil.get(bundle, "edit-on-github");
+			String openInNewWindowLabel = LanguageUtil.get(bundle, "open-in-new-window");
+			String clickDownLabel = LanguageUtil.get(bundle, "click-to-slide-down");
+			String clickUpLabel = LanguageUtil.get(bundle, "click-to-slide-up");
+			String editLabel = LanguageUtil.get(bundle, "edit[command]");
+			String openLabel = LanguageUtil.get(bundle, "open[command]");
+			String hideLabel = LanguageUtil.get(bundle, "hide[command]");
 
 			content.append((uc == null) ? "" : "<span "
 					+ " style=\"cursor: pointer; \""
 					+ " id=\"" + showId + "\""
 					+ " onclick=\"" + showJS + "\""
-					+ " title=\"" + clickUp + "\">" 
-					+ moreDocumentation 
+					+ " title=\"" + clickUpLabel + "\">" 
+					+ moreDocumentationLabel 
 					+ "</span> / ");
 			
 //			content.append("<span style=\"float:right; \">&nbsp;");
 			content.append("<a href=\"" + HtmlUtil.escape(uc.documentationURL) + "\""
 					+ " target=\"_blank\"" 
-					+ " title=\"" + openInNewWindow + "\" >" + open + "</a> / ");
+					+ " title=\"" + openInNewWindowLabel + "\" >" + openLabel + "</a> / ");
 			content.append("<a href=\"" 
 					+ this.contentInitializer.getRepositoryURLPrefix()
 					+ getSuggestedFile(request) + "\""
 					+ " target=\"_blank\""
-					+ " title=\"" + editOnGithub + "\">" 
-					+ edit 
+					+ " title=\"" + editOnGithubLabel + "\">" 
+					+ editLabel 
 					+ "</a> / ");
 			content.append(
 					"<span style=\"cursor: pointer; \""
 					+ " id=\"" + hideId + "\""
 					+ " onclick=\"" + hideJS + "\""
-					+ " title=\"" + clickDown + "\">" 
-					+ hide 
+					+ " title=\"" + clickDownLabel + "\">" 
+					+ hideLabel 
 					+ "</span>");
 //			content.append("</span>");
 			content.append("<br/>");
 			content.append("<iframe src=\"");
 			content.append(HtmlUtil.escape(uc.documentationURL));
 			content.append("\" width=\"100%\" height=\"90%\" > </iframe>");
+			content.append("</div>");
 		} else {
-			String createOnGithub = LanguageUtil.get(bundle, "create-on-github");
+			content.append("<div id=\"");
+			content.append(elementId);
+			content.append("\" style=\"background-color:#cccccc; position:fixed; bottom:0; "
+					+ "width:auto; height:2em; width:40%; min-height:1em; " 
+					+ "transition-property: size top height; "
+					+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;\">");
+
+			String createOnGithubLabel = LanguageUtil.get(bundle, "create-on-github");
+			String showMainDocLabel = LanguageUtil.get(bundle, "show-main-doc");
+			String clickDownLabel = LanguageUtil.get(bundle, "click-to-slide-down");
+			String clickUpLabel = LanguageUtil.get(bundle, "click-to-slide-up");
+			String hideLabel = LanguageUtil.get(bundle, "hide[command]");
+
+			URLConfig mainDocUC = portletDocumentation.getSecondaryUrlConfig("-");
+			if(mainDocUC != null && mainDocUC.documentationURL != null && ! mainDocUC.documentationURL.isEmpty()) {
+				content.append("<span "
+						+ " style=\"cursor: pointer; \""
+						+ " id=\"" + showId + "\""
+						+ " onclick=\"" + showJS 
+						+ "\" title=\"" + clickUpLabel + "\">" 
+						+ showMainDocLabel 
+						+ "</span> / ");
+				content.append(
+						"<span style=\"cursor: pointer; color:#999999; \""
+						+ " id=\"" + hideId + "\""
+						+ " onclick=\"" + hideJS + "\""
+						+ " title=\"" + clickDownLabel + "\">" 
+						+ hideLabel 
+						+ "</span>");
+			}
 
 			content.append("<span style=\"float:right; \">&nbsp;");
 			String createURLPrefix = StringUtil.replace(this.contentInitializer.getRepositoryURLPrefix(), "/blob/", "/new/");
@@ -204,13 +237,19 @@ public class DocumentationFilter extends BaseFilter {
 					+ getSuggestedFile(request)
 					+ "&value="
 					+ HtmlUtil.escapeURL(contentInitializer.generateMarkdown(request, getSuggestedFile(request)))
-					+ "\" target=\"_blank\">" + createOnGithub + "</a>");
+					+ "\" target=\"_blank\">" + createOnGithubLabel + "</a>");
 			content.append("</span>");
-			content.append(portletDocumentation.portletId);
-			content.append(" | ");
-			content.append(getSecondaryTopic(request));
+			content.append("<br/>");
+			content.append("<iframe src=\"");
+			content.append(HtmlUtil.escape(mainDocUC.documentationURL));
+			content.append("\" width=\"100%\" height=\"90%\" > </iframe>");
+			if(ContentInitializer.getConfiguration().showUndocumentedKeys()) {
+				content.append(portletDocumentation.portletId);
+				content.append(" | ");
+				content.append(getSecondaryTopic(request));
+			}
+			content.append("</div>");
 		}
-		content.append("</div>");
 
 		return content.toString();
 	}

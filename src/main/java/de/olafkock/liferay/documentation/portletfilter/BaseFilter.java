@@ -78,7 +78,7 @@ public abstract class BaseFilter implements RenderFilter {
 	 */
 	protected String getSecondaryTopic(RenderRequest request) {
 		final String[] params = new String[] { "toolbarItem", "type", "navigation", "tab", 
-				"tabs1", "tabs2", "configurationScreenKey", "pid", "factoryPid", 
+				"tabs1", "tabs2", "configurationScreenKey", "pid", "factoryPid", "roleType",
 				"mvcRenderCommandName",	"mvcPath"};
 		for (String p : params) {
 			String result = request.getParameter(p);

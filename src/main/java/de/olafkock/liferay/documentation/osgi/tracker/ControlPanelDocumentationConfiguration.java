@@ -10,7 +10,31 @@ import aQute.bnd.annotation.metatype.Meta;
 public interface ControlPanelDocumentationConfiguration {
     
 	@Meta.AD(
-            deflt = "/home/olaf/ds72-workspace/controlpanel-documentation-docs/md/72en",
+			deflt = "false",
+			description = "show-undocumented-keys-description",
+			name = "show-undocumented-keys",
+			required = false
+			)
+	public boolean showUndocumentedKeys();
+	
+	@Meta.AD(
+			deflt = "8",
+			description = "default-video-height-description",
+			name = "default-video-height",
+			required = false
+			)
+	public int defaultVideoHeight();
+
+	@Meta.AD(
+			deflt = "4",
+			description = "default-doc-height-description",
+			name = "default-doc-height",
+			required = false
+			)
+	public int defaultDocHeight();
+	
+	@Meta.AD(
+            deflt = "/tmp/md/72en",
             description = "directory-for-generated-content-description",
             name = "directory-for-generated-content",
             required = false
@@ -40,22 +64,5 @@ public interface ControlPanelDocumentationConfiguration {
             required = false
         )	
 	public boolean generateContent();
-	
-	@Meta.AD(
-			deflt = "false",
-			description = "show-undocumented-keys-description",
-			name = "show-undocumented-keys",
-			required = false
-			)
-	public boolean showUndocumentedKeys();
-	
-	@Meta.AD(
-			deflt = "8",
-			description = "default-video-height-description",
-			name = "default-video-height",
-			required = false
-			)
-	public int defaultVideoHeight();
-	
-	
+		
 }

@@ -152,9 +152,12 @@ public class DocumentationFilter extends BaseFilter {
 			content.append("<div id=\"");
 			content.append(elementId);
 			content.append("\" style=\"background-color:#cccccc; position:fixed; bottom:0; "
-					+ "width:auto; height:4em; width:40%; min-height:1em; " 
+					+ "width:auto; width:40%; min-height:1em; z-index:10;" 
 					+ "transition-property: size top height; "
-					+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;\">");
+					+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;"
+					+ "height:");
+			content.append(""+ ContentInitializer.getConfiguration().defaultDocHeight());
+			content.append("em;\">");
 			
 			String moreDocumentationLabel = LanguageUtil.get(bundle, "more-documentation-and-pointers");
 			String editOnGithubLabel = LanguageUtil.get(bundle, "edit-on-github");
@@ -201,7 +204,7 @@ public class DocumentationFilter extends BaseFilter {
 			content.append("<div id=\"");
 			content.append(elementId);
 			content.append("\" style=\"background-color:#cccccc; position:fixed; bottom:0; "
-					+ "width:auto; height:2em; width:40%; min-height:1em; " 
+					+ "width:auto; height:2em; width:40%; min-height:1em; z-index:10;" 
 					+ "transition-property: size top height; "
 					+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;\">");
 

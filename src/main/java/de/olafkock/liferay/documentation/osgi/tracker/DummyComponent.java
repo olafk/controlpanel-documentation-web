@@ -42,12 +42,11 @@ public class DummyComponent {
 	@Modified
 	protected void activate(Map<String, Object> properties) {
 		ControlPanelDocumentationConfiguration config = ConfigurableUtil.createConfigurable(ControlPanelDocumentationConfiguration.class, properties);
-		log.info( (config.generateContent()?"":"no") 
-				+ " content will be generated"
-				+ (config.generateContent()?" to "+config.generateContentDirectory():"")
-				+ " - Configuration for ControlPanelDocumentation" 
-
-		); 
+		if(config.generateContent()) {
+			log.info( " content will be generated to " + config.generateContentDirectory()
+					+ " - Configuration for ControlPanelDocumentation" 
+			); 
+		}
 	    ContentInitializer.setConfiguration(config);
 	}
 }

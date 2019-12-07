@@ -37,13 +37,12 @@ public class PortletDocumentationFactory {
 				json = HttpUtil.URLtoString(location);
 				log.info("read " + json.length() + " characters config from " + location);
 			} catch (IOException e) {
-				log.error(e);
+				log.warn("Couldn't resolve up-to-date Control Panel documentation content due to " + e.getMessage() + " " + e.getClass().getName());
 			} catch (NullPointerException e) {
 				return null; // not yet initialized
 			}
 			if(json == null || json.length() < 200) {
-				InputStream configuration = PortletDocumentationFactory.class.getResourceAsStream("/content.json");
-				InputStream bis = configuration;
+				InputStream bis = PortletDocumentationFactory.class.getResourceAsStream("/content.json");
 				ByteArrayOutputStream buf = new ByteArrayOutputStream();
 				int conf_read = bis.read();
 				while(conf_read != -1) {
@@ -51,7 +50,7 @@ public class PortletDocumentationFactory {
 				    conf_read = bis.read();
 				}
 				json = buf.toString("UTF-8");
-				log.info("read " + json.length() + " characters config from embedded file");
+				log.info("read " + json.length() + " characters config from embedded file (updated network version not available)");
 			}
 			PortletDocumentation[] docs;
 			docs = JSONFactoryUtil.looseDeserialize(json, PortletDocumentation[].class);

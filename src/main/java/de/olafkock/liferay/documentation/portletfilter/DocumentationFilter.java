@@ -152,7 +152,7 @@ public class DocumentationFilter extends BaseFilter {
 			content.append("<div id=\"");
 			content.append(elementId);
 			content.append("\" style=\"background-color:#cccccc; position:fixed; bottom:0; "
-					+ "width:auto; width:40%; min-height:1em; z-index:10;" 
+					+ "width:auto; width:40%; min-height:1em; z-index:1070;" 
 					+ "transition-property: size top height; "
 					+ "transition-duration: 1s; transition-timing-function: ease; padding:10px;"
 					+ "height:");

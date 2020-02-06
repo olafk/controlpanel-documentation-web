@@ -18,6 +18,14 @@ public interface ControlPanelDocumentationConfiguration {
 	public boolean showUndocumentedKeys();
 	
 	@Meta.AD(
+            deflt = "true",
+            description = "workaround-github-bug-description",
+            name = "workaround-github-bug",
+            required = false
+        )
+	public boolean workaroundGithubBug();
+	
+	@Meta.AD(
 			deflt = "8",
 			description = "default-video-height-description",
 			name = "default-video-height",
@@ -33,14 +41,6 @@ public interface ControlPanelDocumentationConfiguration {
 			)
 	public int defaultDocHeight();
 	
-	@Meta.AD(
-            deflt = "/tmp/md/72en",
-            description = "directory-for-generated-content-description",
-            name = "directory-for-generated-content",
-            required = false
-        )
-	public String generateContentDirectory();
-    
     @Meta.AD(
             deflt = "https://github.com/olafk/controlpanel-documentation-docs/blob/master/md/72en/",
             description = "repository-url-prefix-description",
@@ -48,7 +48,7 @@ public interface ControlPanelDocumentationConfiguration {
             required = false
         )
     public String repositoryURLPrefix();
-
+    
 	@Meta.AD(
             deflt = "https://www.olafkock.de/liferay/controlpaneldocumentation/",
             description = "content-url-prefix-description",
@@ -65,4 +65,12 @@ public interface ControlPanelDocumentationConfiguration {
         )	
 	public boolean generateContent();
 		
+	@Meta.AD(
+            deflt = "/tmp/md/72en",
+            description = "directory-for-generated-content-description",
+            name = "directory-for-generated-content",
+            required = false
+        )
+	public String generateContentDirectory();
+    
 }

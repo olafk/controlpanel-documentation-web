@@ -234,10 +234,11 @@ public class DocumentationFilter extends BaseFilter {
 
 			content.append("<span style=\"float:right; \">&nbsp;");
 			String createURLPrefix = StringUtil.replace(this.contentInitializer.getRepositoryURLPrefix(), "/blob/", "/new/");
+			boolean workaroundGithubBug = ContentInitializer.getConfiguration().workaroundGithubBug();
 			content.append("<a href=\"" 
 					+ createURLPrefix 
 					+ (createURLPrefix.endsWith("/")?"":"/")
-					+ "github-bug-workaround-REMOVE-WHEN-FIXED/" // github swallows one directory level. No ETA given for a fix.
+					+ (workaroundGithubBug? "github-bug-workaround-REMOVE-WHEN-FIXED/" : "") // github swallows one directory level. No ETA given for a fix.
 					+ "?filename="
 					+ getSuggestedFile(request)
 					+ "&value="

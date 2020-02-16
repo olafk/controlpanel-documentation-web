@@ -1065,6 +1065,12 @@
 				"secondary": "-"
 			},
 			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/com.liferay.frontend.theme.font.awesome.web.internal.configuration.CSSFontAwesomeConfiguration.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "com.liferay.frontend.theme.font.awesome.web.internal.configuration.CSSFontAwesomeConfiguration"
+			},
+			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet\/de.olafkock.liferay.translationhelper.Configuration.html",
 				"mediaType": null,
 				"mediaURL": null,

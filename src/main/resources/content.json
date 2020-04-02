@@ -702,6 +702,12 @@
 				"secondary": "layout_edit_layout"
 			},
 			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_layout_admin_web_portlet_GroupPagesPortlet\/layout_edit_layout_set.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "layout_edit_layout_set"
+			},
+			{
 				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_layout_admin_web_portlet_GroupPagesPortlet\/layout_edit_layout_page_template_collection.html",
 				"mediaType": null,
 				"mediaURL": null,
@@ -2459,6 +2465,23 @@
 				"mediaType": null,
 				"mediaURL": null,
 				"secondary": "-"
+			},{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_staging_processes_web_portlet_StagingProcessesPortlet/processes.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "processes"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_staging_processes_web_portlet_StagingProcessesPortlet/scheduled.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "scheduled"
+			},
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_staging_processes_web_portlet_StagingProcessesPortlet/publish_templates_view.jsp.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "publish_templates_view.jsp"
 			}
 		]
 	},

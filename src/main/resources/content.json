@@ -17,6 +17,83 @@
 		]
 	},
 	{
+		"portletId": "com_liferay_portal_workflow_task_web_portlet_MyWorkflowTaskPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_task_web_portlet_MyWorkflowTaskPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_my_account_web_portlet_MyAccountPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_my_account_web_portlet_MyAccountPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_oauth2_provider_web_internal_portlet_OAuth2ConnectedApplicationsPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_oauth2_provider_web_internal_portlet_OAuth2ConnectedApplicationsPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_users_admin_web_portlet_MyOrganizationsPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_users_admin_web_portlet_MyOrganizationsPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_sharing_web_portlet_SharedAssetsPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_sharing_web_portlet_SharedAssetsPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_portal_workflow_web_internal_portlet_UserWorkflowPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_portal_workflow_web_internal_portlet_UserWorkflowPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			}
+		]
+	},
+	{
+		"portletId": "com_liferay_notifications_web_portlet_NotificationsPortlet",
+		"urlConfig": [
+			{
+				"documentationURL": "https:\/\/www.olafkock.de\/liferay\/controlpaneldocumentation\/com_liferay_notifications_web_portlet_NotificationsPortlet.html",
+				"mediaType": null,
+				"mediaURL": null,
+				"secondary": "-"
+			}
+		]
+	},
+	{
 		"portletId": "com_liferay_dynamic_data_mapping_form_web_portlet_DDMFormAdminPortlet",
 		"urlConfig": [
 			{
